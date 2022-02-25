@@ -33,7 +33,8 @@ public class Lesson3 extends AppCompatActivity {
         listProduct.add(new Product(7, "SP 7", 800));
         listProduct.add(new Product(8, "SP 8", 900));
 
-        productListViewAdapter = new ProductListViewAdapter(listProduct);
+        productListViewAdapter = new ProductListViewAdapter(
+                getApplicationContext(), R.layout.product_view, listProduct);
 
         listViewProduct = findViewById(R.id.listproduct);
         listViewProduct.setAdapter(productListViewAdapter);

@@ -12,31 +12,36 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class ProductListViewAdapter extends BaseAdapter {
+public class ProductListViewAdapter extends ArrayAdapter<Product> {
 
     private ArrayList<Product> listProduct;
 
-    public ProductListViewAdapter(ArrayList<Product> _listProduct) {
+    public ProductListViewAdapter(@NonNull Context context, int resource, ArrayList<Product> _listProduct) {
+        super(context, resource);
         listProduct = _listProduct;
     }
+
+//    public ProductListViewAdapter(ArrayList<Product> _listProduct) {
+//        listProduct = _listProduct;
+//    }
 
     @Override
     public int getCount() {
         return listProduct.size();
     }
-
-    @Override
-    public Object getItem(int position) {
-        //Trả về dữ liệu ở vị trí position của Adapter, tương ứng là phần tử
-        //có chỉ số position trong listProduct
-        return listProduct.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        //Trả về một ID của phần
-        return listProduct.get(position).productID;
-    }
+//
+//    @Override
+//    public Object getItem(int position) {
+//        //Trả về dữ liệu ở vị trí position của Adapter, tương ứng là phần tử
+//        //có chỉ số position trong listProduct
+//        return listProduct.get(position);
+//    }
+//
+//    @Override
+//    public long getItemId(int position) {
+//        //Trả về một ID của phần
+//        return listProduct.get(position).productID;
+//    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -50,7 +55,7 @@ public class ProductListViewAdapter extends BaseAdapter {
         } else viewProduct = convertView;
 
         //Bind sữ liệu phần tử vào View
-        Product product = (Product) getItem(position);
+        Product product = listProduct.get(position);
         ((TextView) viewProduct.findViewById(R.id.idproduct)).setText(String.format("ID = %d", product.productID));
         ((TextView) viewProduct.findViewById(R.id.nameproduct)).setText(String.format("Tên SP : %s", product.name));
         ((TextView) viewProduct.findViewById(R.id.priceproduct)).setText(String.format("Giá %d", product.price));
