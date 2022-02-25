@@ -43,7 +43,7 @@ public class Lesson3 extends AppCompatActivity {
         listViewProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Product product = (Product) productListViewAdapter.getItem(position);
+                Product product = listProduct.get(position);
                 //Làm gì đó khi chọn sản phẩm (ví dụ tạo một Activity hiện thị chi tiết, biên tập ..)
                 Toast.makeText(getApplicationContext(), product.name, Toast.LENGTH_SHORT).show();
             }

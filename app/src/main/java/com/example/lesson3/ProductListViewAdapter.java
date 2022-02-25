@@ -1,24 +1,27 @@
 package com.example.lesson3;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
 public class ProductListViewAdapter extends BaseAdapter {
 
-    //Dữ liệu liên kết bởi Adapter là một mảng các sản phẩm
-    final ArrayList<Product> listProduct;
+    private ArrayList<Product> listProduct;
 
-    ProductListViewAdapter(ArrayList<Product> listProduct) {
-        this.listProduct = listProduct;
+    public ProductListViewAdapter(ArrayList<Product> _listProduct) {
+        listProduct = _listProduct;
     }
 
     @Override
     public int getCount() {
-        //Trả về tổng số phần tử, nó được gọi bởi ListView
         return listProduct.size();
     }
 
